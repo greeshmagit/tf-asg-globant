@@ -11,13 +11,17 @@ pipeline{
               sh 'terraform init'
            }   
     }
-    stage("terraform validate and plan"){
-        parallel{
-                 steps{
-                          echo "Terraform validation"
-                          sh 'terraform validate'
-                      }
-                }
+    stage("terraform validate"){
+       steps{
+                 echo "Terraform validation"
+                 sh 'terraform validate'
+            }
+    }
+    stage("terraform  plan"){
+       steps{
+                 echo "Terraform plan"
+                 sh 'terraform plan'
+            }
     }
     stage("terraform action"){
       steps{
